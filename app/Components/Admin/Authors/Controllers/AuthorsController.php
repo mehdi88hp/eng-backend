@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Components\Admin\Books\Controllers;
+namespace App\Components\Admin\Authors\Controllers;
 
-use App\Components\Admin\Books\Requests\StoreRequests;
+use App\Components\Admin\Authors\Requests\StoreRequests;
 use App\Http\Controllers\Controller;
-use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Http\Request;
 
-class BooksController extends Controller
+class AuthorsController extends Controller
 {
     public function index()
     {
@@ -22,7 +22,7 @@ class BooksController extends Controller
     public function store(StoreRequests $request)
     {
         //first needs to store cefr and other models
-        Book::create($request->all());
+        Author::create($request->all());
         return 84848484;
         return ($requests->all());
     }

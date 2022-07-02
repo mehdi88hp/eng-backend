@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Author;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,6 +19,38 @@ use Inertia\Inertia;
 
 
 Route::get('/', function () {
+    // Get instance of your model
+
+    $category = (new \App\Models\Category)->fill([
+        'name'=>'test3',
+        'description'=>'test3desc',
+        'slug'=>'CCC'
+    ]);
+    $parent =\App\Models\Category::find(2);
+
+    $parent->appendNode($category);
+//    $parent->children()->create($category);
+//    $category->makeRoot()->save();
+    $category = \App\Models\Category::find(2);
+
+    $author = Author::find(1);
+
+    $author->attachCategories($category);
+
+    dd($author->hasCategories(1));
+
+//    $author->
+    dd($author);
+    return 435;
+    dd(234);
+
+    $author = Author::find(1);
+// Get attached categories collection
+    $author->categories;
+
+// Get attached categories query builder
+    dd($author->categories());
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),

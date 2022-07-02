@@ -22,4 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Route::middleware('auth:sanctum')->group(function () {
 //    return $request->user();
     require base_path('app/Components/Admin/Books/routes.php');
+    require base_path('app/Components/Admin/Cefr/routes.php');
+    require base_path('app/Components/Admin/Authors/routes.php');
+    require base_path('app/Components/Admin/Categories/routes.php');
 //});

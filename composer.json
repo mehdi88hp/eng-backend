@@ -8,11 +8,15 @@
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.5.2",
+        "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^9.11",
         "laravel/jetstream": "^2.8",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "tightenco/ziggy": "^1.0"
+        "spatie/laravel-sluggable": "^3.4",
+        "spatie/laravel-translatable": "^6.0",
+        "tightenco/ziggy": "^1.0",
+        "watson/validating": "^7.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

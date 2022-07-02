@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('cefr');
-
-        Schema::create('cefr', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->id();
             $table->string('title_fa');
             $table->string('title_en');
-            $table->string('level');
-            $table->text('description_fa');
-            $table->text('description_en');
+            $table->unsignedBigInteger('book_id');
             $table->timestamps();
+
+            $table->foreign('book_id')
+                ->references('id')->on('books')->onDelete('cascade');
         });
     }
 
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cefr');
+        Schema::dropIfExists('chapters');
     }
 };

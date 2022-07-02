@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Kalnoy\Nestedset\NestedSet;
 
 return new class extends Migration
 {
@@ -13,15 +14,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chapters', function (Blueprint $table) {
-            $table->id();
-            $table->string('title_fa');
-            $table->string('title_en');
-            $table->string('book_id');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('slug');
+            $table->json('name');
+            $table->json('description')->nullable();
+            NestedSet::columns($table);
             $table->timestamps();
+            $table->softDeletes();
 
-            $table->foreign('book_id')
-                ->references('id')->on('books')->onDelete('cascade');
+            // Indexes
+            $table->unique('slug');
         });
     }
 
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chapters');
+        Schema::dropIfExists('categories');
     }
 };

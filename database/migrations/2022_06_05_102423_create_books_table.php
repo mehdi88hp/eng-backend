@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('books');
+
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title_fa');
@@ -21,8 +23,8 @@ return new class extends Migration
             $table->text('description_en');
             $table->json('author'); // should be a many to many relation
             $table->json('categories');// should be a many to many relation
-            $table->unsignedInteger('publisher');// should be a relation
-            $table->unsignedInteger('cefr_id');// should be a relation
+            $table->unsignedBigInteger('publisher');// should be a relation
+            $table->unsignedBigInteger('cefr_id');// should be an enum
             $table->unsignedSmallInteger('pages');
             $table->unsignedMediumInteger('duration');
             $table->timestamp('release_date');
